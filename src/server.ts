@@ -7,6 +7,7 @@ import mainRoutes from './routes/index';
 dotenv.config();
 
 const server = express();
+
 server.use(express.json());
 server.set('view engine', 'mustache');
 server.set('views', path.join(__dirname, 'views'));
@@ -21,4 +22,4 @@ server.use((req, res)=>{
     res.render('pages/404');
 });
 
-server.listen(process.env.PORT);
+server.listen(process.env.PORT || 80);
