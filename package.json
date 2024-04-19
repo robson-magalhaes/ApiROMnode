@@ -1,5 +1,5 @@
 {
-  "name": "nodets-canil",
+  "name": "api-romnode",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,19 +8,8 @@
     "start": "node dist/server.js",
     "postinstall": "npm run tsc && copyfiles -u 1 src/**/*.mustache dist/",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start-dev": "nodemon -e ts,json,mustache src/server.ts",
-    "build": "netlify deploy --prod"
+    "start-dev": "nodemon -e ts,json,mustache src/server.ts"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/suporteb7web/nodets-canil.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/suporteb7web/nodets-canil/issues"
-  },
-  "homepage": "https://github.com/suporteb7web/nodets-canil#readme",
   "dependencies": {
     "dotenv": "^10.0.0",
     "express": "^4.19.2",
