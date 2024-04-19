@@ -1,5 +1,5 @@
-# nodets-canil
-Projeto feito no módulo do curso Node + Typescript
+# node api
+Projeto de api para estudo
 
 ### Pré-requisitos globais:
 `npm i -g nodemon typescript ts-node`
