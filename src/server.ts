@@ -1,25 +1,30 @@
-import express from 'express';
-import dotenv from 'dotenv';
-import mustache from 'mustache-express';
+import express, { Request, Response } from 'express';
 import path from 'path';
+import dotenv from 'dotenv';
+import cors from 'cors';
 import mainRoutes from './routes/index';
+import uploadRoutes from './routes/upload';
+import phraseRoutes from './routes/phrases';
+import todoRoutes from './routes/todo';
+import usersRoutes from './routes/users';
 
 dotenv.config();
-
 const server = express();
 
+server.use(cors());
 server.use(express.json());
-server.set('view engine', 'mustache');
-server.set('views', path.join(__dirname, 'views'));
-server.engine('mustache', mustache());
-
 server.use(express.static(path.join(__dirname, '../public')));
+server.use(express.urlencoded({extended: true}));
 
+// Rotas
 server.use(mainRoutes);
-server.use(express.urlencoded({extended:true}));
-
-server.use((req, res)=>{
-    res.render('pages/404');
+server.use(uploadRoutes);
+server.use(phraseRoutes);
+server.use(todoRoutes);
+server.use(usersRoutes);
+server.use((req: Request, res: Response) => {
+    res.status(404);
+    res.json({error: 'Endpoint não encontrado.'});
 });
-
-server.listen(3000);
+// Porta
+server.listen(process.env.PORT);
